@@ -77,7 +77,7 @@ export function CareerFilter({ isVertical = false, selectedCareers = [], onCaree
                     <span className="text-xs font-semibold">Todas las carreras</span>
                     <button
                       onClick={handleRemoveAll}
-                      className="hover:bg-white/20 rounded-full p-1 transition-colors group-hover:scale-110"
+                      className="hover:bg-white/20 rounded-full p-1 transition-colors group-hover:scale-110 cursor-pointer"
                       aria-label="Quitar todas las carreras"
                       type="button"
                     >
@@ -93,7 +93,7 @@ export function CareerFilter({ isVertical = false, selectedCareers = [], onCaree
                       <span className="text-xs font-semibold">{career.label}</span>
                       <button
                         onClick={() => handleRemoveCareer(career.value)}
-                        className="hover:bg-white/20 rounded-full p-1 transition-colors group-hover:scale-110"
+                        className="hover:bg-white/20 rounded-full p-1 transition-colors group-hover:scale-110 cursor-pointer"
                         aria-label={`Quitar ${career.label}`}
                         type="button"
                       >
@@ -122,7 +122,7 @@ export function CareerFilter({ isVertical = false, selectedCareers = [], onCaree
               <span className="text-xs font-semibold">Todas las carreras</span>
               <button
                 onClick={handleRemoveAll}
-                className="hover:bg-white/20 rounded-full p-1 transition-colors group-hover:scale-110"
+                className="hover:bg-white/20 rounded-full p-1 transition-colors group-hover:scale-110 cursor-pointer"
                 aria-label="Quitar todas las carreras"
                 type="button"
               >
@@ -138,7 +138,7 @@ export function CareerFilter({ isVertical = false, selectedCareers = [], onCaree
                 <span className="text-xs font-semibold">{career.label}</span>
                 <button
                   onClick={() => handleRemoveCareer(career.value)}
-                  className="hover:bg-white/20 rounded-full p-1 transition-colors group-hover:scale-110"
+                  className="hover:bg-white/20 rounded-full p-1 transition-colors group-hover:scale-110 cursor-pointer"
                   aria-label={`Quitar ${career.label}`}
                   type="button"
                 >

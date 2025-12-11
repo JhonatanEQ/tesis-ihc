@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import {
   Search,
   Filter,
@@ -54,7 +54,7 @@ export function HelpSection() {
       {/* Header */}
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full flex items-center justify-between p-6 hover:bg-gray-50 transition-colors"
+        className="w-full flex items-center justify-between p-6 hover:bg-gray-50 transition-colors cursor-pointer"
         aria-expanded={isExpanded}
       >
         <div className="flex items-center space-x-3">

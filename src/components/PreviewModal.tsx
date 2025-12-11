@@ -1,4 +1,3 @@
-import React from 'react'
 import { X, Download, Eye } from 'lucide-react'
 import type { Thesis } from './ThesisCard'
 import { Button } from './ui/Button'
@@ -44,7 +43,7 @@ export function PreviewModal({ isOpen, onClose, thesis }: PreviewModalProps) {
           </div>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-[#E30613] transition-colors p-1 rounded-full hover:bg-red-50"
+            className="text-gray-400 hover:text-[#E30613] transition-colors p-1 rounded-full hover:bg-red-50 cursor-pointer"
             aria-label="Cerrar modal"
           >
             <X className="w-6 h-6" />

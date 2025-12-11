@@ -29,7 +29,7 @@ export function Input({
           className={`
             block w-full rounded-md border-gray-300 shadow-sm 
             focus:border-[#003770] focus:ring-[#003770] sm:text-sm py-2.5
-            border px-4
+            border px-4 cursor-text
             ${Icon ? 'pl-10' : ''}
             ${error ? 'border-red-500' : 'border-gray-300'}
             ${className}

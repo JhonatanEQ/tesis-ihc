@@ -1,4 +1,3 @@
-import React from 'react'
 import { Menu, X } from 'lucide-react'
 
 interface HeaderProps {
@@ -33,7 +32,7 @@ export function Header({
           {showMobileMenu && onMobileMenuToggle && (
             <button
               onClick={onMobileMenuToggle}
-              className="lg:hidden w-10 h-10 flex items-center justify-center bg-white/10 rounded-md hover:bg-white/20 transition-colors"
+              className="lg:hidden w-10 h-10 flex items-center justify-center bg-white/10 rounded-md hover:bg-white/20 transition-colors cursor-pointer"
               aria-label={isMobileMenuOpen ? 'Cerrar menú de filtros' : 'Abrir menú de filtros'}
             >
               {isMobileMenuOpen ? (

@@ -16,7 +16,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    'inline-flex items-center justify-center font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed rounded-md'
+    'inline-flex items-center justify-center font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer rounded-md'
   const variants = {
     primary: 'bg-gradient-to-r from-[#002555] to-[#003770] text-white hover:from-[#003770] hover:to-[#004d93] focus:ring-[#003770] transition-all duration-300',
     secondary:

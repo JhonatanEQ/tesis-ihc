@@ -43,28 +43,23 @@ export function ResultsPage({ onBack, isMobileFilterOpen, filters, onFilterChang
 
   const validateInput = (value: string): string | undefined => {
     if (!value.trim()) return undefined
-    
-    // Solo caracteres repetidos (ej: xxxxx, aaaaa)
+
     if (/^(.)\1+$/.test(value.trim())) {
       return 'No puede contener solo caracteres repetidos'
     }
-    
-    // Solo números
+
     if (/^\d+$/.test(value.trim())) {
       return 'No puede contener solo números'
     }
-    
-    // Solo símbolos o caracteres especiales
+
     if (/^[^a-zA-Z0-9\s]+$/.test(value.trim())) {
       return 'No puede contener solo símbolos'
     }
-    
-    // Muy corto y sin sentido (menos de 2 caracteres)
+
     if (value.trim().length < 2) {
       return 'Debe tener al menos 2 caracteres'
     }
-    
-    // Demasiados caracteres especiales consecutivos
+
     if (/[^a-zA-Z0-9\s]{4,}/.test(value)) {
       return 'Contiene demasiados caracteres especiales consecutivos'
     }
@@ -88,8 +83,7 @@ export function ResultsPage({ onBack, isMobileFilterOpen, filters, onFilterChang
       const tutorError = validateInput(localFilters.tutorName)
       if (tutorError) newErrors.tutorName = tutorError
     }
-    
-    // Validar que al menos una modalidad esté seleccionada
+
     if (!localFilters.selectedModalities || localFilters.selectedModalities.length === 0) {
       newErrors.modalities = 'Debe seleccionar al menos una modalidad'
     }
@@ -214,7 +208,7 @@ export function ResultsPage({ onBack, isMobileFilterOpen, filters, onFilterChang
                 className="w-full mb-6 flex items-center justify-center space-x-2 px-4 py-3 bg-white border-2 border-[#003770] text-[#003770] rounded-lg font-medium hover:bg-[#003770] hover:text-white transition-all duration-300 shadow-md hover:shadow-lg group"
             >
                 <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-                <span>Volver</span>
+                <span>Volver Atras</span>
             </button>
 
             <div className="mb-6 bg-white rounded-lg border-2 border-[#003770] p-4 shadow-md">
@@ -441,7 +435,7 @@ export function ResultsPage({ onBack, isMobileFilterOpen, filters, onFilterChang
                     <button
                       key={pageNum}
                       onClick={() => handlePageChange(pageNum)}
-                      className={`w-10 h-10 flex items-center justify-center rounded-md font-semibold transition-colors ${
+                      className={`w-10 h-10 flex items-center justify-center rounded-md font-semibold transition-colors cursor-pointer ${
                         currentPage === pageNum
                           ? 'bg-gradient-to-r from-[#002555] to-[#003770] text-white shadow-sm'
                           : 'text-gray-600 hover:bg-gray-100'
@@ -456,7 +450,7 @@ export function ResultsPage({ onBack, isMobileFilterOpen, filters, onFilterChang
                     <span className="w-10 h-10 flex items-center justify-center text-gray-400">...</span>
                     <button
                       onClick={() => handlePageChange(totalPages)}
-                      className={`w-10 h-10 flex items-center justify-center rounded-md font-semibold transition-colors ${
+                      className={`w-10 h-10 flex items-center justify-center rounded-md font-semibold transition-colors cursor-pointer ${
                         currentPage === totalPages
                           ? 'bg-gradient-to-r from-[#002555] to-[#003770] text-white shadow-sm'
                           : 'text-gray-600 hover:bg-gray-100'
