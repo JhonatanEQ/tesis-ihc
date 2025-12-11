@@ -151,7 +151,7 @@ export function HomePage({ onSearch, initialFilters, recentTheses, onAddToRecent
           <HelpSection />
         </div>
 
-        <div className="mb-12 md:mb-20 w-full max-w-md">
+        <div className="mb-12 md:mb-20 flex justify-center">
           <Button
             variant="primary"
             className="w-full sm:w-auto px-8 sm:px-12 md:px-16 py-3 sm:py-3.5 text-sm sm:text-base font-bold shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 bg-[#003770] hover:bg-[#002555]"
