@@ -1,4 +1,4 @@
-import React from 'react'
+import {useState } from 'react'
 import { Search } from 'lucide-react'
 import { Input } from '../components/ui/Input'
 import { Button } from '../components/ui/Button'
@@ -17,35 +17,30 @@ interface HomePageProps {
   onAddToRecent: (thesis: Thesis) => void
 }
 export function HomePage({ onSearch, initialFilters, recentTheses, onAddToRecent }: HomePageProps) {
-  const [filters, setFilters] = React.useState<FilterState>(initialFilters)
-  const [selectedThesis, setSelectedThesis] = React.useState<Thesis | null>(null)
-  const [isModalOpen, setIsModalOpen] = React.useState(false)
-  const [errors, setErrors] = React.useState<{ searchTerm?: string; tutorName?: string; modalities?: string }>({})
+  const [filters, setFilters] = useState<FilterState>(initialFilters)
+  const [selectedThesis, setSelectedThesis] = useState<Thesis | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [errors, setErrors] = useState<{ searchTerm?: string; tutorName?: string; modalities?: string }>({})
 
   const validateInput = (value: string): string | undefined => {
     if (!value.trim()) return undefined
-    
-    // Solo caracteres repetidos (ej: xxxxx, aaaaa)
+
     if (/^(.)\1+$/.test(value.trim())) {
       return 'No puede contener solo caracteres repetidos'
     }
-    
-    // Solo números
+
     if (/^\d+$/.test(value.trim())) {
       return 'No puede contener solo números'
     }
-    
-    // Solo símbolos o caracteres especiales
+
     if (/^[^a-zA-Z0-9\s]+$/.test(value.trim())) {
       return 'No puede contener solo símbolos'
     }
-    
-    // Muy corto y sin sentido (menos de 2 caracteres)
+
     if (value.trim().length < 2) {
       return 'Debe tener al menos 2 caracteres'
     }
-    
-    // Demasiados caracteres especiales consecutivos
+
     if (/[^a-zA-Z0-9\s]{4,}/.test(value)) {
       return 'Contiene demasiados caracteres especiales consecutivos'
     }
@@ -65,8 +60,7 @@ export function HomePage({ onSearch, initialFilters, recentTheses, onAddToRecent
       const tutorError = validateInput(filters.tutorName)
       if (tutorError) newErrors.tutorName = tutorError
     }
-    
-    // Validar que al menos una modalidad esté seleccionada
+
     if (!filters.selectedModalities || filters.selectedModalities.length === 0) {
       newErrors.modalities = 'Debe seleccionar al menos una modalidad'
     }
@@ -80,8 +74,7 @@ export function HomePage({ onSearch, initialFilters, recentTheses, onAddToRecent
 
   const handleFilterChange = (newFilters: Partial<FilterState>) => {
     setFilters(prev => ({ ...prev, ...newFilters }))
-    
-    // Limpiar errores cuando se modifica el campo
+
     if ('searchTerm' in newFilters) {
       setErrors(prev => ({ ...prev, searchTerm: undefined }))
     }
@@ -110,9 +103,9 @@ export function HomePage({ onSearch, initialFilters, recentTheses, onAddToRecent
           </p>
         </div>
 
-        <div className="w-full max-w-3xl mb-8 ">
+        <div className="w-full max-w-3xl mb-6 md:mb-8">
           <div className="flex items-center space-x-2 mb-2">
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-xs sm:text-sm font-medium text-gray-700">
               Buscar:
             </label>
             <Tooltip
@@ -122,9 +115,9 @@ export function HomePage({ onSearch, initialFilters, recentTheses, onAddToRecent
           </div>
           <div className="relative">
             <Input
-              placeholder="Ejemplo: Machine Learning, Reconocimiento Facial, Juan Pérez..."
+              placeholder="Ejemplo: Machine Learning, Reconocimiento Facial..."
               icon={Search}
-              className={`h-12 text-base shadow-md border-2 ${errors.searchTerm ? 'border-red-500 focus:border-red-500' : 'border-[#003770] focus:border-[#003770]'}`}
+              className={`h-10 sm:h-12 text-sm sm:text-base shadow-md border-2 ${errors.searchTerm ? 'border-red-500 focus:border-red-500' : 'border-[#003770] focus:border-[#003770]'}`}
               value={filters.searchTerm}
               onChange={(e) => handleFilterChange({ searchTerm: e.target.value })}
               onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
@@ -137,9 +130,9 @@ export function HomePage({ onSearch, initialFilters, recentTheses, onAddToRecent
           </div>
         </div>
 
-        <Card className="w-full p-8 mb-8 shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-[#003770]">
-          <div className="flex items-center space-x-2 mb-6">
-            <h3 className="text-base font-bold text-[#003770]">
+        <Card className="w-full p-4 sm:p-6 md:p-8 mb-6 md:mb-8 shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-[#003770]">
+          <div className="flex items-center space-x-2 mb-4 md:mb-6">
+            <h3 className="text-sm sm:text-base font-bold text-[#003770]">
               Filtros Avanzados
             </h3>
             <Tooltip
@@ -158,18 +151,18 @@ export function HomePage({ onSearch, initialFilters, recentTheses, onAddToRecent
           <HelpSection />
         </div>
 
-        <div className="mb-20">
+        <div className="mb-12 md:mb-20 w-full max-w-md">
           <Button
             variant="primary"
-            className="px-16 py-3.5 text-base font-bold shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 bg-[#003770] hover:bg-[#002555]"
+            className="w-full sm:w-auto px-8 sm:px-12 md:px-16 py-3 sm:py-3.5 text-sm sm:text-base font-bold shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 bg-[#003770] hover:bg-[#002555]"
             onClick={handleSearch}
           >
             BUSCAR
           </Button>
         </div>
 
-        <div className="w-full bg-white border border-[#003770] rounded-lg p-6">
-          <h3 className="text-sm font-semibold text-gray-700 mb-4">
+        <div className="w-full bg-white border border-[#003770] rounded-lg p-4 sm:p-6">
+          <h3 className="text-xs sm:text-sm font-semibold text-gray-700 mb-3 sm:mb-4">
             Recientes
           </h3>
           <div className="space-y-3">

@@ -239,10 +239,10 @@ export function ResultsPage({ onBack, isMobileFilterOpen, filters, onFilterChang
                 )}
             </div>
 
-            <div className="bg-white rounded-lg border-2 border-[#003770] p-5 mb-6 shadow-md">
-                <div className="flex items-center justify-between mb-4">
+            <div className="bg-white rounded-lg border-2 border-[#003770] p-3 sm:p-4 md:p-5 mb-4 sm:mb-6 shadow-md">
+                <div className="flex items-center justify-between mb-3 sm:mb-4">
                 <div className="flex items-center space-x-2">
-                    <h3 className="font-bold text-[#003770]">Filtros</h3>
+                    <h3 className="font-bold text-[#003770] text-sm sm:text-base">Filtros</h3>
                     <Tooltip
                     content="Aplica filtros para encontrar tesis específicas"
                     position="right"
@@ -251,13 +251,13 @@ export function ResultsPage({ onBack, isMobileFilterOpen, filters, onFilterChang
                 </div>
 
                 {(filters.searchTerm || filters.selectedCareers.length > 0 || filters.yearFrom || filters.yearTo || (filters.selectedModalities.length > 0 && filters.selectedModalities.length < 5) || filters.tutorName) && (
-                  <div className="mb-4">
+                  <div className="mb-3 sm:mb-4">
                     <p className="text-xs text-gray-500 mb-2">Filtros activos:</p>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
                       {filters.searchTerm && (
                         <Badge
                           variant="default"
-                          className="px-3 py-1 bg-gradient-to-r from-[#003770] to-[#004d93] text-white border-[#003770]"
+                          className="px-2 sm:px-3 py-0.5 sm:py-1 text-xs bg-gradient-to-r from-[#003770] to-[#004d93] text-white border-[#003770]"
                         >
                           Búsqueda: "{filters.searchTerm}"
                           <button
@@ -273,7 +273,7 @@ export function ResultsPage({ onBack, isMobileFilterOpen, filters, onFilterChang
                         <Badge
                           key={career}
                           variant="default"
-                          className="px-3 py-1 bg-gradient-to-r from-[#003770] to-[#004d93] text-white border-[#003770]"
+                          className="px-2 sm:px-3 py-0.5 sm:py-1 text-xs bg-gradient-to-r from-[#003770] to-[#004d93] text-white border-[#003770]"
                         >
                           {CAREER_LABELS[career]}
                           <button
@@ -291,7 +291,7 @@ export function ResultsPage({ onBack, isMobileFilterOpen, filters, onFilterChang
                       {(filters.yearFrom || filters.yearTo) && (
                         <Badge
                           variant="default"
-                          className="px-3 py-1 bg-gradient-to-r from-[#003770] to-[#004d93] text-white border-[#003770]"
+                          className="px-2 sm:px-3 py-0.5 sm:py-1 text-xs bg-gradient-to-r from-[#003770] to-[#004d93] text-white border-[#003770]"
                         >
                           Año: {filters.yearFrom || '...'} - {filters.yearTo || '...'}
                           <button
@@ -307,7 +307,7 @@ export function ResultsPage({ onBack, isMobileFilterOpen, filters, onFilterChang
                         <Badge
                           key={modality}
                           variant="default"
-                          className="px-3 py-1 bg-gradient-to-r from-[#003770] to-[#004d93] text-white border-[#003770]"
+                          className="px-2 sm:px-3 py-0.5 sm:py-1 text-xs bg-gradient-to-r from-[#003770] to-[#004d93] text-white border-[#003770]"
                         >
                           {MODALITY_LABELS[modality]}
                           <button
@@ -325,7 +325,7 @@ export function ResultsPage({ onBack, isMobileFilterOpen, filters, onFilterChang
                       {filters.tutorName && (
                         <Badge
                           variant="default"
-                          className="px-3 py-1 bg-gradient-to-r from-[#003770] to-[#004d93] text-white border-[#003770]"
+                          className="px-2 sm:px-3 py-0.5 sm:py-1 text-xs bg-gradient-to-r from-[#003770] to-[#004d93] text-white border-[#003770]"
                         >
                           Tutor: "{filters.tutorName}"
                           <button
@@ -361,11 +361,11 @@ export function ResultsPage({ onBack, isMobileFilterOpen, filters, onFilterChang
         </aside>
 
         <div className="flex-1 min-w-0">
-          <div className="bg-white rounded-lg border-2 border-[#003770] p-5 mb-6 shadow-md">
+          <div className="bg-white rounded-lg border-2 border-[#003770] p-3 sm:p-4 md:p-5 mb-4 sm:mb-6 shadow-md">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-3 md:space-y-0">
               <div>
-                <h2 className="text-xl font-bold text-[#003770]">Resultados</h2>
-                <p className="text-sm text-gray-600 flex items-center space-x-2">
+                <h2 className="text-lg sm:text-xl font-bold text-[#003770]">Resultados</h2>
+                <p className="text-xs sm:text-sm text-gray-600 flex items-center space-x-2">
                   <span className="font-semibold text-[#003770]">{allThesis.length}</span>
                   <span>encontrados</span>
                   <Tooltip
@@ -378,6 +378,7 @@ export function ResultsPage({ onBack, isMobileFilterOpen, filters, onFilterChang
                 <Select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
+                  className="text-xs sm:text-sm"
                   options={[
                     {
                       value: 'relevance',
@@ -401,12 +402,12 @@ export function ResultsPage({ onBack, isMobileFilterOpen, filters, onFilterChang
             </div>
           </div>
 
-          <div className="mb-4">
-            <p className="text-sm text-gray-600">
+          <div className="mb-3 sm:mb-4">
+            <p className="text-xs sm:text-sm text-gray-600">
               Mostrando <span className="font-semibold">{startIndex + 1}-{Math.min(endIndex, allThesis.length)}</span> de <span className="font-semibold">{allThesis.length}</span> resultados
             </p>
           </div>
-          <div className="space-y-6 mb-8">
+          <div className="space-y-4 sm:space-y-6 mb-6 sm:mb-8">
             {currentThesis.map((thesis) => (
               <ThesisCard
                 key={thesis.id}
@@ -416,26 +417,26 @@ export function ResultsPage({ onBack, isMobileFilterOpen, filters, onFilterChang
             ))}
           </div>
 
-          <div className="bg-white rounded-lg border-2 border-[#003770] p-4 mb-8 shadow-md">
-            <div className="flex items-center justify-between">
+          <div className="bg-white rounded-lg border-2 border-[#003770] p-3 sm:p-4 mb-8 shadow-md">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0">
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-gray-600 hover:text-[#003770] disabled:opacity-50"
+                className="text-gray-600 hover:text-[#003770] disabled:opacity-50 w-full sm:w-auto text-xs sm:text-sm"
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1}
               >
-                <ChevronLeft className="w-4 h-4 mr-1" />
+                <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
                 Anterior
               </Button>
-              <div className="flex space-x-2">
+              <div className="flex space-x-1 sm:space-x-2">
                 {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
                   const pageNum = i + 1
                   return (
                     <button
                       key={pageNum}
                       onClick={() => handlePageChange(pageNum)}
-                      className={`w-10 h-10 flex items-center justify-center rounded-md font-semibold transition-colors cursor-pointer ${
+                      className={`w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-md font-semibold transition-colors cursor-pointer text-xs sm:text-base ${
                         currentPage === pageNum
                           ? 'bg-gradient-to-r from-[#002555] to-[#003770] text-white shadow-sm'
                           : 'text-gray-600 hover:bg-gray-100'
@@ -447,10 +448,10 @@ export function ResultsPage({ onBack, isMobileFilterOpen, filters, onFilterChang
                 })}
                 {totalPages > 5 && (
                   <>
-                    <span className="w-10 h-10 flex items-center justify-center text-gray-400">...</span>
+                    <span className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center text-gray-400 text-xs sm:text-base">...</span>
                     <button
                       onClick={() => handlePageChange(totalPages)}
-                      className={`w-10 h-10 flex items-center justify-center rounded-md font-semibold transition-colors cursor-pointer ${
+                      className={`w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-md font-semibold transition-colors cursor-pointer text-xs sm:text-base ${
                         currentPage === totalPages
                           ? 'bg-gradient-to-r from-[#002555] to-[#003770] text-white shadow-sm'
                           : 'text-gray-600 hover:bg-gray-100'
@@ -464,19 +465,19 @@ export function ResultsPage({ onBack, isMobileFilterOpen, filters, onFilterChang
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-gray-600 hover:text-[#003770] disabled:opacity-50"
+                className="text-gray-600 hover:text-[#003770] disabled:opacity-50 w-full sm:w-auto text-xs sm:text-sm"
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
               >
                 Siguiente
-                <ChevronRight className="w-4 h-4 ml-1" />
+                <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
               </Button>
             </div>
           </div>
 
-          <div className="bg-white rounded-lg border-2 border-[#003770]/10 p-6 shadow-md">
-            <div className="flex items-center space-x-2 mb-5">
-              <h3 className="text-base font-bold text-[#003770] uppercase tracking-wide">
+          <div className="bg-white rounded-lg border-2 border-[#003770]/10 p-4 sm:p-5 md:p-6 shadow-md">
+            <div className="flex items-center space-x-2 mb-4 sm:mb-5">
+              <h3 className="text-sm sm:text-base font-bold text-[#003770] uppercase tracking-wide">
                 Tesis Relacionadas
               </h3>
               <Tooltip
@@ -484,14 +485,14 @@ export function ResultsPage({ onBack, isMobileFilterOpen, filters, onFilterChang
                 position="right"
               />
             </div>
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {filteredThesis.slice(0, 3).map((thesis) => (
                 <div
                   key={thesis.id}
                   onClick={() => handlePreview(thesis)}
-                  className="border-2 border-[#003770] rounded-lg p-4 hover:border-[#003770]/30 hover:shadow-sm transition-all cursor-pointer group"
+                  className="border-2 border-[#003770] rounded-lg p-3 sm:p-4 hover:border-[#003770]/30 hover:shadow-sm transition-all cursor-pointer group"
                 >
-                  <h4 className="font-bold text-gray-900 text-sm mb-2 group-hover:text-[#003770] transition-colors">
+                  <h4 className="font-bold text-gray-900 text-xs sm:text-sm mb-2 group-hover:text-[#003770] transition-colors">
                     {thesis.title}
                   </h4>
                   <div className="text-xs text-gray-600 flex items-center space-x-2">

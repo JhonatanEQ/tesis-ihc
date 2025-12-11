@@ -15,6 +15,20 @@ export function Header({
     <header className="relative bg-gradient-to-r from-[#002555] via-[#003770] to-[#004d93] text-white py-4 px-6 md:px-12 shadow-md sticky top-0 z-40">
       <div className="flex items-center justify-between max-w-7xl mx-auto w-full">
         <div className="flex items-center space-x-3">
+          {showMobileMenu && onMobileMenuToggle && (
+            <button
+              onClick={onMobileMenuToggle}
+              className="lg:hidden w-10 h-10 flex items-center justify-center bg-white/10 rounded-md hover:bg-white/20 transition-colors cursor-pointer"
+              aria-label={isMobileMenuOpen ? 'Cerrar menú de filtros' : 'Abrir menú de filtros'}
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
+            </button>
+          )}
+          
           <img 
             src="/logo.jpg" 
             alt="Logo FCyT" 
@@ -29,20 +43,6 @@ export function Header({
         </div>
 
         <div className="flex items-center space-x-4">
-          {showMobileMenu && onMobileMenuToggle && (
-            <button
-              onClick={onMobileMenuToggle}
-              className="lg:hidden w-10 h-10 flex items-center justify-center bg-white/10 rounded-md hover:bg-white/20 transition-colors cursor-pointer"
-              aria-label={isMobileMenuOpen ? 'Cerrar menú de filtros' : 'Abrir menú de filtros'}
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-5 h-5" />
-              ) : (
-                <Menu className="w-5 h-5" />
-              )}
-            </button>
-          )}
-
           <img 
             src="/umss.png" 
             alt="Logo UMSA" 

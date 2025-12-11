@@ -1,4 +1,4 @@
-import React from 'react'
+import type React from 'react'
 import { ChevronDown } from 'lucide-react'
 interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label?: string

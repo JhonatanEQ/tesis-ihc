@@ -56,8 +56,8 @@ export function FilterPanel({
           )}
         </div>
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr_1fr] gap-4">
-          <div className="p-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_1.5fr_1fr] gap-3 md:gap-4">
+          <div className="p-3 md:p-4">
             <CareerFilter 
               isVertical={false} 
               selectedCareers={filters?.selectedCareers || []}
@@ -65,8 +65,8 @@ export function FilterPanel({
             />
           </div>
 
-          <div className="p-4">
-            <div className="grid grid-cols-2 gap-4 mb-4">
+          <div className="p-3 md:p-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-3 md:mb-4">
               <YearRangeFilter 
                 isVertical={false}
                 yearFrom={filters?.yearFrom || ''}
@@ -95,7 +95,7 @@ export function FilterPanel({
             </div>
           </div>
 
-          <div className="p-4">
+          <div className="p-3 md:p-4">
             <ModalityFilter 
               selectedModalities={filters?.selectedModalities || []}
               onModalityChange={(modalities) => onFilterChange?.({ selectedModalities: modalities })}
